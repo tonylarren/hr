@@ -1,0 +1,22 @@
+services:
+  cv-ocr:
+    build:
+      context: .
+      args:
+        OCR_LANG: ${OCR_LANG:-en}
+    image: cv-ocr:latest
+    container_name: cv-ocr
+    env_file: .env
+    ports:
+      - "${PORT:-8000}:8000"
+    volumes:
+      - ./secrets:/secrets:ro   # service-account / gcloud credentials (mode 2)
+      - cv-ocr-data:/data       # OAuth sign-in token (mode 1)
+    restart: unless-stopped
+    deploy:
+      resources:
+        limits:
+          memory: 4g
+
+volumes:
+  cv-ocr-data:

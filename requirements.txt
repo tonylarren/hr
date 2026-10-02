@@ -1,0 +1,11 @@
+fastapi>=0.115,<1
+uvicorn[standard]>=0.30
+pydantic-settings>=2.3
+google-api-python-client>=2.130
+google-auth>=2.30
+paddlepaddle==3.2.0  # 3.3.x breaks CPU inference (oneDNN ConvertPirAttribute2RuntimeAttribute)
+paddleocr==3.3.0
+pymupdf>=1.24
+pillow>=10
+numpy
+google-auth-oauthlib>=1.2
